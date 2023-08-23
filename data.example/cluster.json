@@ -1,0 +1,5 @@
+{
+    "AllowDiscordClusterAlias": true,
+    "EnableAutoStart": true,
+    "AutoRestartIfShutdown": true
+}
