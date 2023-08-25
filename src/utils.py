@@ -26,11 +26,11 @@ def get_new_cookie(section_name, option_name, elements_added):
     cookie = "{original_option_name}{splitting_char}{random_string}".format(
         original_option_name=option_name,
         splitting_char=UNIQUE_CHAR_OPTION,
-        random_string=get_random_string,
+        random_string=get_random_string(),
     )
     baked = (section_name, cookie)
     if baked in elements_added:
-        return get_new_cookie()
+        return get_new_cookie(section_name, option_name, elements_added)
     return cookie
 
 

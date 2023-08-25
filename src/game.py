@@ -1,4 +1,4 @@
-from custom import CustomConfigParser
+from utils import CustomConfigParser
 from os import path
 from shutil import copyfile
 
