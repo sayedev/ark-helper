@@ -2,7 +2,8 @@ import ctypes
 import subprocess
 from os import path
 
-from settings import NAME, SERVERS_PATH, say
+from settings import NAME, SERVERS_PATH
+from utils import say
 
 
 def figure_game_exe_location(map_code):

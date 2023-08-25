@@ -1,7 +1,8 @@
 from asm import read_asm_profile, write_asm_profile
 from firewall import allow_server_exe_through_filewall
 from game import copy_game_engine_ini, write_game_user_ini_settings
-from settings import ENABLED_MAPS, say
+from settings import ENABLED_MAPS
+from utils import say
 
 if __name__ == "__main__":
     say("Env Loaded")

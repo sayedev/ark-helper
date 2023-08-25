@@ -1,16 +1,16 @@
-from configparser import ConfigParser
+from custom import CustomConfigParser
 from os import path
 from shutil import copyfile
 
+from ports import get_game_ports_for_map
 from settings import (
+    ASM_DEFAULT_JSON,
     GAME_SERVER_INI,
     GAME_SERVER_USER_INI,
     INSTALLED_MODS,
     SERVER_ALIAS,
     SERVERS_PATH,
-    ASM_DEFAULT_JSON
 )
-from ports import get_game_ports_for_map
 
 GAME_INI = "Game.ini"
 GAME_USER_SETTINGS_INI = "GameUserSettings.ini"
@@ -48,7 +48,7 @@ def write_game_user_ini_settings(map_code):
     location = figure_game_ini_location(map_code, GAME_USER_SETTINGS_INI)
     ports = get_game_ports_for_map(map_code)
 
-    user_settings = ConfigParser()
+    user_settings = CustomConfigParser()
     user_settings.read(GAME_SERVER_USER_INI)
 
     user_settings = create_game_user_ini_sections(
@@ -62,8 +62,12 @@ def write_game_user_ini_settings(map_code):
     user_settings.set("SessionSettings", "QueryPort", str(ports["QueryPort"]))
     user_settings.set("ServerSettings", "RCONPort", str(ports["RCONPort"]))
     user_settings.set("ServerSettings", "activemods", INSTALLED_MODS)
-    user_settings.set("ServerSettings", "serverpassword", ASM_DEFAULT_JSON["ServerPassword"])
-    user_settings.set("ServerSettings", "serveradminpassword", ASM_DEFAULT_JSON["AdminPassword"])
+    user_settings.set(
+        "ServerSettings", "serverpassword", ASM_DEFAULT_JSON["ServerPassword"]
+    )
+    user_settings.set(
+        "ServerSettings", "serveradminpassword", ASM_DEFAULT_JSON["AdminPassword"]
+    )
 
     with open(location, mode="w+", encoding="utf-8") as game_user_ini:
         user_settings.write(game_user_ini, space_around_delimiters=False)

@@ -1,6 +1,3 @@
-"""
-Ark Utils Script
-"""
 from json import dumps as to_json
 from json import loads as to_dict
 from os import getenv
@@ -8,10 +5,6 @@ from os import getenv
 from dotenv import load_dotenv
 
 load_dotenv()
-
-
-def say(words, *args):
-    print(NAME, words, *args)
 
 
 # -------------
@@ -33,6 +26,11 @@ MAPS = {
     "Lost Island": "LostIsland",
     "Fjordur": "Fjordur",
 }
+# -------------
+# Config
+# Used to make the options in the .INI unique cause configParser is not ready to handle the ARK
+# -------------
+UNIQUE_CHAR_OPTION = getenv("SERVERS_PATH", "&")
 # -------------
 # PATHs
 # -------------

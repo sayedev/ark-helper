@@ -8,10 +8,10 @@ from settings import (
     ENABLED_MAPS,
     SERVER_ALIAS,
     SERVERS_PATH,
-    say,
     to_dict,
     to_json,
 )
+from utils import say
 
 
 def get_asm_profile_name(map_code):
